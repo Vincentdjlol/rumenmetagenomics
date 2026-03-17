@@ -2,7 +2,7 @@ executor: slurm
 latency-wait: 30
 
 default-resources:
-  runtime: 150m
+  runtime: 1440m
   slurm_patition: workstations
 
 set-resources:
