@@ -1,0 +1,8 @@
+seqtk sample -s100 /commons/Themas/Thema07/metagenomics/rumen/rumen_miseq/T0-17012023_S1_L001_R1_001.fastq 100000 > /students/2025-2026/groepjenaamvincentbertnaomy/subset_miseq/T0_sub1.fastq
+seqtk sample -s100 /commons/Themas/Thema07/metagenomics/rumen/rumen_miseq/T0-17012023_S1_L001_R2_001.fastq 100000 > /students/2025-2026/groepjenaamvincentbertnaomy/subset_miseq/T0_sub2.fastq
+
+seqtk sample -s100 /commons/Themas/Thema07/metagenomics/rumen/rumen_miseq/T1-27012023_S2_L001_R1_001.fastq 100000 > /students/2025-2026/groepjenaamvincentbertnaomy/subset_miseq/T1_sub1.fastq
+seqtk sample -s100 /commons/Themas/Thema07/metagenomics/rumen/rumen_miseq/T1-27012023_S2_L001_R2_001.fastq 100000 > /students/2025-2026/groepjenaamvincentbertnaomy/subset_miseq/T1_sub2.fastq
+
+seqtk sample -s100 /commons/Themas/Thema07/metagenomics/rumen/rumen_miseq/T2-02022023_S3_L001_R1_001.fastq 100000 > /students/2025-2026/groepjenaamvincentbertnaomy/subset_miseq/T2_sub1.fastq
+seqtk sample -s100 /commons/Themas/Thema07/metagenomics/rumen/rumen_miseq/T2-02022023_S3_L001_R2_001.fastq 100000 > /students/2025-2026/groepjenaamvincentbertnaomy/subset_miseq/T2_sub2.fastq

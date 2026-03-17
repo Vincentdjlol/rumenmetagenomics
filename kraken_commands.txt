@@ -1,0 +1,3 @@
+snakemake -s Snakefilerumen.smk --jobs 10 --workflow-profile slurmprofile/ ### Minion
+
+snakemake -s Snakefilesmallminion.smk --jobs 6 --workflow-profile slurmprofile/ ### Miseq
