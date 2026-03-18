@@ -1,0 +1,6 @@
+kraken_unclassified: /students/2025-2026/groepjenaamvincentbertnaomy/Projectrumen/results/unclassifieds/
+kaiju_db: /data/datasets/KAIJU/kaiju_db_nr_2024-08-25/kaiju_db_nr.fmi
+nodes: /data/datasets/KAIJU/kaiju_db_nr_2024-08-25/nodes.dmp
+names: /data/datasets/KAIJU/kaiju_db_nr_2024-08-25/names.dmp
+KAIJU_output: results_KAIJU/
+threads: 16
