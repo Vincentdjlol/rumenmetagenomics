@@ -3,11 +3,16 @@ latency-wait: 30
 
 default-resources:
   runtime: 1440m
-  slurm_patition: workstations
+  slurm_partition: workstations
 
 set-resources:
   kraken2:
     slurm_partition: assemblix
     cpus_per_task: 20
     mem_mb: 100000
-    runtime: 150m
+    runtime: 1440m
+  kraken2_paired:
+    slurm_partition: assemblix
+    cpus_per_task: 20
+    mem_mb: 200000
+    runtime: 1440m
