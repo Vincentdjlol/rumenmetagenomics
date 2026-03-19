@@ -6,8 +6,12 @@ default-resources:
   slurm_patition: workstations
 
 set-resources:
-  kraken2:
+  kaiju_classify:
     slurm_partition: assemblix
-    cpus_per_task: 20
-    mem_mb: 400000
-    runtime: 150m
+    mem_mb: 120000
+    runtime: 1440m
+
+  kaiju_report:
+    slurm_partition: assemblix
+    mem_mb: 40000
+    runtime: 1440m

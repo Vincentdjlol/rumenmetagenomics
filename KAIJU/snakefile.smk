@@ -1,47 +1,46 @@
-import glob
 import os
 
 configfile: "config.yaml"
 
 UNCLASSIFIED_DIR = config["kraken_unclassified"]
-OUTDIR = config["KAIJU_output"]
+OUTDIR = config["kaiju_output"]
 
-# automatische sample detectie
-reads = ["unclassifieds_T1_", "unclassifieds_T2_", "unclassifieds_"]
+SAMPLES = ["T0", "T1", "T2"]
 
 
 rule all:
     input:
-        expand(os.path.join(OUTDIR, "{sample}.kaiju.report"), sample=reads)
+        expand(os.path.join(OUTDIR, "{sample}.kaiju.report"), sample=SAMPLES)
 
 
 rule kaiju_classify:
     input:
-        r1=os.path.join(UNCLASSIFIED_DIR, "{sample}sub1.unclassified"),
-        r2=os.path.join(UNCLASSIFIED_DIR, "{sample}sub2.unclassified")
+        r1=os.path.join(UNCLASSIFIED_DIR, "unclassifieds_{sample}_sub1.fastq"),
+        r2=os.path.join(UNCLASSIFIED_DIR, "unclassifieds_{sample}_sub2.fastq")
     output:
         kaiju=os.path.join(OUTDIR, "{sample}.kaiju.out")
-    threads: config["threads"]
+    threads: 4
+    resources:
+        mem_mb=64000,
+        runtime=1440
     shell:
         """
         mkdir -p {OUTDIR}
 
         kaiju \
-            -t {config[nodes]} \
-            -f {config[kaiju_db]} \
-            -i {input.r1} \
-            -j {input.r2} \
-            -o {output.kaiju} \
-            -z {threads}
+          -t {config[nodes]} \
+          -f {config[kaiju_db]} \
+          -i {input.r1} \
+          -j {input.r2} \
+          -o {output.kaiju} \
+          -z {threads}
         """
-
 
 rule kaiju_report:
     input:
         os.path.join(OUTDIR, "{sample}.kaiju.out")
     output:
         os.path.join(OUTDIR, "{sample}.kaiju.report")
-    threads: 1
     shell:
         """
         kaijuReport \
