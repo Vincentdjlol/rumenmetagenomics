@@ -3,15 +3,16 @@ latency-wait: 30
 
 default-resources:
   runtime: 150m
-  slurm_patition: workstations
+  slurm_partition: workstations
 
 set-resources:
   kaiju_classify:
     slurm_partition: assemblix
-    mem_mb: 120000
-    runtime: 1440m
+    nodelist: assemblix2025
+    mem_mb: 64000
+    runtime: 60m
 
   kaiju_report:
     slurm_partition: assemblix
-    mem_mb: 40000
-    runtime: 1440m
+    mem_mb: 20000
+    runtime: 60m

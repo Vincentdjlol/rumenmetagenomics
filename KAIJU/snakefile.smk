@@ -23,11 +23,14 @@ rule kaiju_classify:
     resources:
         mem_mb=64000,
         runtime=1440
+    conda:
+        "envs/kaiju.yaml"
     shell:
         """
         mkdir -p {OUTDIR}
 
         kaiju \
+          -a mem \
           -t {config[nodes]} \
           -f {config[kaiju_db]} \
           -i {input.r1} \
@@ -41,6 +44,8 @@ rule kaiju_report:
         os.path.join(OUTDIR, "{sample}.kaiju.out")
     output:
         os.path.join(OUTDIR, "{sample}.kaiju.report")
+    conda:
+        "envs/kaiju.yaml"
     shell:
         """
         kaijuReport \
