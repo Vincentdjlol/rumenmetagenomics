@@ -10,9 +10,9 @@ set-resources:
     slurm_partition: assemblix
     nodelist: assemblix2025
     mem_mb: 64000
-    runtime: 60m
+    runtime: 150m
 
   kaiju_report:
     slurm_partition: assemblix
     mem_mb: 20000
-    runtime: 60m
+    runtime: 150m

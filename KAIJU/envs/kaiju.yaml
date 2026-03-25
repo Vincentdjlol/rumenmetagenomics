@@ -2,4 +2,4 @@ name: kaiju_env
 channels:
   - bioconda
 dependencies:
-  - kaiju
+  - kaiju=1.7.3
