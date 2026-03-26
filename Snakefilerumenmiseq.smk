@@ -15,4 +15,4 @@ rule kraken2_paired:
         kraken="../results/kraken/miseq_subsets/{sample}.kraken"
     threads: 20
     shell:
-        "kraken2 --db {krakendb} --paired {input.R1} {input.R2} --threads {threads} --report {output.report} --output {output.kraken}"
+        "kraken2 --db {krakendb} --paired {input.R1} {input.R2} --threads {threads} --report {output.report} --output {output.kraken} --unclassified-out {wildcards.sample}#.fastq"

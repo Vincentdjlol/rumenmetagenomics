@@ -1,0 +1,1 @@
+snakemake -s snakefile.smk --jobs 3 --workflow-profile slurmprofile/

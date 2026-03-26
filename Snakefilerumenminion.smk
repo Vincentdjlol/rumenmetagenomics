@@ -1,10 +1,10 @@
 krakendb = "/commons/data/NCBI/KRAKEN2/k2_standard_20251015"
 
-SAMPLES = [f"FAW60292_pass_barcode07_f8cd6141_86f121af_{i}.fastq.gz_classified" for i in range(23)]
+reads = [f"FAW60292_pass_barcode07_f8cd6141_86f121af_{i}.fastq.gz_classified" for i in range(23)]
 
 rule all:
     input:
-        expand("results/{sample}.report", sample = SAMPLES)
+        expand("results/{sample}.report", sample = reads)
 
 rule kraken2:
     input:

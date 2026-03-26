@@ -1,0 +1,13 @@
+executor: slurm
+latency-wait: 30
+
+default-resources:
+  runtime: 1440m
+  slurm_partition: workstations
+
+set-resources:
+  bracken:
+    slurm_partition: assemblix
+    cpus_per_task: 20
+    mem_mb: 100000
+    runtime: 1440m
