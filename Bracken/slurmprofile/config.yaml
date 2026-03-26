@@ -1,5 +1,5 @@
 executor: slurm
-latency-wait: 30
+latency-wait: 60
 
 default-resources:
   runtime: 1440m
