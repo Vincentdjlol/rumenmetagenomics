@@ -9,7 +9,7 @@ set-resources:
   kaiju_classify:
     slurm_partition: assemblix
     nodelist: assemblix2025
-    mem_mb: 64000
+    mem_mb: 320000
     runtime: 150m
 
   kaiju_report:
