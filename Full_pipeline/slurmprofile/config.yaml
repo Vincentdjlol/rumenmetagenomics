@@ -11,13 +11,26 @@ set-resources:
     nodelist: assemblix2025
     mem_mb: 320000
     runtime: 150m
-  kraken2:
-    slurm_partition: assemblix
-    cpus_per_task: 20
-    mem_mb: 100000
-    runtime: 1440m
   kraken2_paired:
     slurm_partition: assemblix
     cpus_per_task: 20
     mem_mb: 200000
+    runtime: 1440m
+
+  kraken2_T0:
+    slurm_partition: assemblix
+    cpus_per_task: 20
+    mem_mb: 100000
+    runtime: 1440m
+
+  kraken2_T1:
+    slurm_partition: assemblix
+    cpus_per_task: 20
+    mem_mb: 100000
+    runtime: 1440m
+
+  kraken2_T2:
+    slurm_partition: assemblix
+    cpus_per_task: 20
+    mem_mb: 100000
     runtime: 1440m
