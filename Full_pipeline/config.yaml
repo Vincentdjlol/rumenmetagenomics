@@ -1,5 +1,6 @@
-kraken_unclassified: /students/2025-2026/groepjenaamvincentbertnaomy/results/kraken/unclassifieds/
-# kaiju_db: /data/datasets/KAIJU/kaiju_db_progenomes_2023-05-25/kaiju_db_progenomes.fmi
+kraken_db:
+  - "/commons/data/NCBI/KRAKEN2/k2_standard_20251015"
+
 kaiju_db:
  - "/data/datasets/KAIJU/kaiju_db_nr_2024-08-25"
 nodes: /data/datasets/KAIJU/kaiju_db_progenomes_2023-05-25/nodes.dmp

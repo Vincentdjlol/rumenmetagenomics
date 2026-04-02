@@ -39,10 +39,12 @@ rule kraken2_T0:
         report="results/kraken/T0/{sample}.report",
         unclassified="results/kraken/T0/{sample}_unclassified.fastq"
     threads: 20
+    params:
+        db=config["kraken_db"]
     shell:
         """
         kraken2 \
-            --db {krakendb} \
+            --db {params.db} \
             --threads {threads} \
             --output {output.kraken} \
             --report {output.report} \
@@ -57,11 +59,13 @@ rule kraken2_T1:
         kraken="results/kraken/T1/{sample}.kraken",
         report="results/kraken/T1/{sample}.report",
         unclassified="results/kraken/T1/{sample}_unclassified.fastq"
+    params:
+        db = config["kaiju_db"]
     threads: 20
     shell:
         """
         kraken2 \
-            --db {krakendb} \
+            --db {params.db} \
             --threads {threads} \
             --output {output.kraken} \
             --report {output.report} \
@@ -77,10 +81,12 @@ rule kraken2_T2:
         report="results/kraken/T2/{sample}.report",
         unclassified="results/kraken/T2/{sample}_unclassified.fastq"
     threads: 20
+    params:
+        db=config["kraken_db"]
     shell:
         """
         kraken2 \
-            --db {krakendb} \
+            --db {params.db} \
             --threads {threads} \
             --output {output.kraken} \
             --report {output.report} \
@@ -94,12 +100,14 @@ rule kaiju_T0:
     output:
         "results/kaiju/T0/{sample}.kaiju.out"
     threads: 20
+    params:
+        db=config["kaiju_db"]
     shell:
         """
         kaiju -a mem \
               -z {threads} \
-              -t {kaijudb}/nodes.dmp \
-              -f {kaijudb}/kaiju_db_nr.fmi \
+              -t {paramd.db}/nodes.dmp \
+              -f {params.db}/kaiju_db_nr.fmi \
               -i {input.unclassified} \
               -o {output} \
               -v
@@ -111,12 +119,14 @@ rule kaiju_T1:
     output:
         "results/kaiju/T1/{sample}.kaiju.out"
     threads: 20
+    params:
+        db=config["kaiju_db"]
     shell:
         """
         kaiju -a mem \
               -z {threads} \
-              -t {kaijudb}/nodes.dmp \
-              -f {kaijudb}/kaiju_db_nr.fmi \
+              -t {params.db}/nodes.dmp \
+              -f {params.db}/kaiju_db_nr.fmi \
               -i {input.unclassified} \
               -o {output} \
               -v
@@ -128,12 +138,14 @@ rule kaiju_T2:
     output:
         "results/kaiju/T2/{sample}.kaiju.out"
     threads: 20
+    params:
+        db=config["kaiju_db"]
     shell:
         """
         kaiju -a mem \
               -z {threads} \
-              -t {kaijudb}/nodes.dmp \
-              -f {kaijudb}/kaiju_db_nr.fmi \
+              -t {params.db}/nodes.dmp \
+              -f {params.db}/kaiju_db_nr.fmi \
               -i {input.unclassified} \
               -o {output} \
               -v

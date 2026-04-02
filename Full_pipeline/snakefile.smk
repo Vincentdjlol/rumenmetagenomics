@@ -6,7 +6,6 @@ SAMPLES = [
     "T2-02022023_S3_L001",
 ]
 
-KRAKENDB = "/commons/data/NCBI/KRAKEN2/k2_standard_20251015"
 
 ##################################
 # Final targets
@@ -32,11 +31,13 @@ rule kraken2:
         kraken="output/results/kraken/{sample}.kraken",
         unclassified_1="output/results/kraken/{sample}_unclassified_1.fastq",
         unclassified_2="output/results/kraken/{sample}_unclassified_2.fastq"
+    params:
+        db = config["kaiju_db"]
     threads: 12
     shell:
         """
         kraken2 \
-            --db {KRAKENDB} \
+            --db {params.db} \
             --paired {input.R1} {input.R2} \
             --threads {threads} \
             --report {output.report} \
