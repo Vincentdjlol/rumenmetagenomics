@@ -1,0 +1,6 @@
+kraken_db: /commons/data/NCBI/KRAKEN2/k2_standard_20251015
+kaiju_db: /data/datasets/KAIJU/kaiju_db_nr_2024-08-25
+nodes: /data/datasets/KAIJU/kaiju_db_progenomes_2023-05-25/nodes.dmp
+names: /data/datasets/KAIJU/kaiju_db_progenomes_2023-05-25/names.dmp
+kaiju_output: results_KAIJU/
+threads: 32

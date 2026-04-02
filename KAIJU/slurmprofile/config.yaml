@@ -3,6 +3,7 @@ latency-wait: 30
 
 default-resources:
   runtime: 150m
+<<<<<<< HEAD
   slurm_patition: workstations
 
 set-resources:
@@ -10,4 +11,18 @@ set-resources:
     slurm_partition: assemblix
     cpus_per_task: 20
     mem_mb: 400000
+=======
+  slurm_partition: workstations
+
+set-resources:
+  kaiju_classify:
+    slurm_partition: assemblix
+    nodelist: assemblix2025
+    mem_mb: 320000
+    runtime: 150m
+
+  kaiju_report:
+    slurm_partition: assemblix
+    mem_mb: 20000
+>>>>>>> Full_pipeline
     runtime: 150m

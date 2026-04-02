@@ -1,0 +1,5 @@
+name: kaiju_env
+channels:
+  - bioconda
+dependencies:
+  - kaiju

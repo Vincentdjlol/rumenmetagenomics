@@ -1,0 +1,103 @@
+executor: slurm
+latency-wait: 30
+
+default-resources:
+  runtime: 150m
+  slurm_partition: assemblix
+
+set-resources:
+  kaiju:
+    slurm_partition: assemblix
+    cpus_per_task: 8
+    mem_mb: 320000
+    runtime: 240m
+
+  kraken2:
+    slurm_partition: assemblix
+    cpus_per_task: 12
+    mem_mb: 100000
+    runtime: 1440m
+
+  kraken2_T0:
+    slurm_partition: assemblix
+    cpus_per_task: 20
+    mem_mb: 100000
+    runtime: 1440m
+
+  kraken2_T1:
+    slurm_partition: assemblix
+    cpus_per_task: 20
+    mem_mb: 100000
+    runtime: 1440m
+
+  kraken2_T2:
+    slurm_partition: assemblix
+    cpus_per_task: 20
+    mem_mb: 100000
+    runtime: 1440m
+
+  kaiju_T0:
+    slurm_partition: assemblix
+    cpus_per_task: 8
+    mem_mb: 320000
+    runtime: 240m
+
+  kaiju_T1:
+    slurm_partition: assemblix
+    cpus_per_task: 8
+    mem_mb: 320000
+    runtime: 240m
+
+  kaiju_T2:
+    slurm_partition: assemblix
+    cpus_per_task: 8
+    mem_mb: 320000
+    runtime: 240m
+
+  kaiju_add_taxon_names:
+    slurm_partition: assemblix
+    cpus_per_task: 4
+    mem_mb: 16000
+    runtime: 60m
+
+  kaiju_report:
+    slurm_partition: assemblix
+    cpus_per_task: 4
+    mem_mb: 16000
+    runtime: 60m
+
+  kaiju_add_taxon_names_T0:
+    slurm_partition: assemblix
+    cpus_per_task: 4
+    mem_mb: 16000
+    runtime: 60m
+
+  kaiju_add_taxon_names_T1:
+    slurm_partition: assemblix
+    cpus_per_task: 4
+    mem_mb: 16000
+    runtime: 60m
+
+  kaiju_add_taxon_names_T2:
+    slurm_partition: assemblix
+    cpus_per_task: 4
+    mem_mb: 16000
+    runtime: 60m
+
+  kaiju_report_T0:
+    slurm_partition: assemblix
+    cpus_per_task: 4
+    mem_mb: 16000
+    runtime: 60m
+
+  kaiju_report_T1:
+    slurm_partition: assemblix
+    cpus_per_task: 4
+    mem_mb: 16000
+    runtime: 60m
+
+  kaiju_report_T2:
+    slurm_partition: assemblix
+    cpus_per_task: 4
+    mem_mb: 16000
+    runtime: 60m
