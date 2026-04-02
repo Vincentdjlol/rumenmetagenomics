@@ -1,4 +1,4 @@
-configfile: "config/config.yaml"
+configfile: "config.yaml"
 
 SAMPLES = [
     "T0-17012023_S1_L001",
@@ -7,20 +7,12 @@ SAMPLES = [
 ]
 
 
-##################################
-# Final targets
-##################################
-
 rule all:
     input:
         expand("output/results/kraken/{sample}.report", sample=SAMPLES),
         expand("output/results/kraken/{sample}.kraken", sample=SAMPLES),
-        expand("output/results/kaiju/{sample}.names.out", sample=SAMPLES)
-
-
-##################################
-# Kraken2
-##################################
+        expand("output/results/kaiju/{sample}.names.out", sample=SAMPLES),
+        expand("output/results/kaiju/{sample}.summary.tsv", sample=SAMPLES)
 
 rule kraken2:
     input:
@@ -32,7 +24,7 @@ rule kraken2:
         unclassified_1="output/results/kraken/{sample}_unclassified_1.fastq",
         unclassified_2="output/results/kraken/{sample}_unclassified_2.fastq"
     params:
-        db = config["kaiju_db"]
+        db = config["kraken_db"]
     threads: 12
     shell:
         """
@@ -44,10 +36,6 @@ rule kraken2:
             --output {output.kraken} \
             --unclassified-out output/results/kraken/{wildcards.sample}_unclassified#.fastq
         """
-
-##################################
-# Kaiju (op UNCLASSIFIED reads)
-##################################
 
 rule kaiju:
     input:
@@ -72,9 +60,6 @@ rule kaiju:
               -v
         """
 
-##################################
-# Kaiju taxon names
-##################################
 
 rule kaiju_add_taxon_names:
     input:
@@ -92,4 +77,23 @@ rule kaiju_add_taxon_names:
             -n {params.db}/names.dmp \
             -i {input} \
             -o {output}
+        """
+
+rule kaiju_report:
+    input:
+        "output/results/kaiju/{sample}.db_refseq_nr.out"
+    output:
+        "output/results/kaiju/{sample}.summary.tsv"
+    params:
+        db=config["kaiju_db"]
+    conda:
+        "envs/kaiju.yaml"
+    shell:
+        """
+        kaiju2table \
+            -t {params.db}/nodes.dmp \
+            -n {params.db}/names.dmp \
+            -r species \
+            -o {output} \
+            {input}
         """

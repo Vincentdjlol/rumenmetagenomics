@@ -1,4 +1,4 @@
-configfile: "config/config.yaml"
+configfile: "config.yaml"
 
 krakendb = "/commons/data/NCBI/KRAKEN2/k2_standard_20251015"
 kaijudb = "/data/datasets/KAIJU/kaiju_db_nr_2024-08-25"
@@ -29,7 +29,13 @@ rule all:
         expand("results/kraken/T2/{sample}.kraken", sample=get_samples("T2")),
         expand("results/kaiju/T0/{sample}.kaiju.out", sample=get_samples("T0")),
         expand("results/kaiju/T1/{sample}.kaiju.out", sample=get_samples("T1")),
-        expand("results/kaiju/T2/{sample}.kaiju.out", sample=get_samples("T2"))
+        expand("results/kaiju/T2/{sample}.kaiju.out", sample=get_samples("T2")),
+        expand("results/kaiju/T0/{sample}.names.out", sample=get_samples("T0")),
+        expand("results/kaiju/T1/{sample}.names.out", sample=get_samples("T1")),
+        expand("results/kaiju/T2/{sample}.names.out", sample=get_samples("T2")),
+        expand("results/kaiju/T0/{sample}.summary.tsv", sample=get_samples("T0")),
+        expand("results/kaiju/T1/{sample}.summary.tsv", sample=get_samples("T1")),
+        expand("results/kaiju/T2/{sample}.summary.tsv", sample=get_samples("T2"))
 
 rule kraken2_T0:
     input:
@@ -106,7 +112,7 @@ rule kaiju_T0:
         """
         kaiju -a mem \
               -z {threads} \
-              -t {paramd.db}/nodes.dmp \
+              -t {params.db}/nodes.dmp \
               -f {params.db}/kaiju_db_nr.fmi \
               -i {input.unclassified} \
               -o {output} \
@@ -149,4 +155,116 @@ rule kaiju_T2:
               -i {input.unclassified} \
               -o {output} \
               -v
+        """
+
+
+rule kaiju_add_taxon_names_T0:
+    input:
+        "results/kaiju/T0/{sample}.kaiju.out"
+    output:
+        "results/kaiju/T0/{sample}.names.out"
+    params:
+        db=config["kaiju_db"]
+    conda:
+        "envs/kaiju.yaml"
+    shell:
+        """
+        kaiju-addTaxonNames \
+            -t {params.db}/nodes.dmp \
+            -n {params.db}/names.dmp \
+            -i {input} \
+            -o {output}
+        """
+
+rule kaiju_add_taxon_names_T1:
+    input:
+        "results/kaiju/T1/{sample}.kaiju.out"
+    output:
+        "results/kaiju/T1/{sample}.names.out"
+    params:
+        db=config["kaiju_db"]
+    conda:
+        "envs/kaiju.yaml"
+    shell:
+        """
+        kaiju-addTaxonNames \
+            -t {params.db}/nodes.dmp \
+            -n {params.db}/names.dmp \
+            -i {input} \
+            -o {output}
+        """
+
+rule kaiju_add_taxon_names_T2:
+    input:
+        "results/kaiju/T2/{sample}.kaiju.out"
+    output:
+        "results/kaiju/T2/{sample}.names.out"
+    params:
+        db=config["kaiju_db"]
+    conda:
+        "envs/kaiju.yaml"
+    shell:
+        """
+        kaiju-addTaxonNames \
+            -t {params.db}/nodes.dmp \
+            -n {params.db}/names.dmp \
+            -i {input} \
+            -o {output}
+        """
+
+rule kaiju_report_T0:
+    input:
+        "results/kaiju/T0/{sample}.kaiju.out"
+    output:
+        "results/kaiju/T0/{sample}.summary.tsv"
+    params:
+        db=config["kaiju_db"]
+    conda:
+        "envs/kaiju.yaml"
+    shell:
+        """
+        kaiju2table \
+            -t {params.db}/nodes.dmp \
+            -n {params.db}/names.dmp \
+            -r species \
+            -o {output} \
+            {input}
+        """
+
+rule kaiju_report_T1:
+    input:
+        "results/kaiju/T1/{sample}.kaiju.out"
+    output:
+        "results/kaiju/T1/{sample}.summary.tsv"
+    params:
+        db=config["kaiju_db"]
+    conda:
+        "envs/kaiju.yaml"
+    shell:
+        """
+        kaiju2table \
+            -t {params.db}/nodes.dmp \
+            -n {params.db}/names.dmp \
+            -r species \
+            -o {output} \
+            {input}
+        """
+
+rule kaiju_report_T2:
+    input:
+        "results/kaiju/T2/{sample}.kaiju.out"
+    output:
+        "results/kaiju/T2/{sample}.summary.tsv"
+    params:
+        db=config["kaiju_db"]
+    conda:
+        "envs/kaiju.yaml"
+    shell:
+        """
+        kaiju2table \
+            -t {params.db}/nodes.dmp \
+            -n {params.db}/names.dmp \
+            -r species \
+            -o {output} \
+            {input}
         """

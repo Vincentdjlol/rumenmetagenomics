@@ -8,13 +8,14 @@ default-resources:
 set-resources:
   kaiju:
     slurm_partition: assemblix
-    nodelist: assemblix2025
+    cpus_per_task: 8
     mem_mb: 320000
-    runtime: 150m
-  kraken2_paired:
+    runtime: 240m
+
+  kraken2:
     slurm_partition: assemblix
-    cpus_per_task: 20
-    mem_mb: 200000
+    cpus_per_task: 12
+    mem_mb: 100000
     runtime: 1440m
 
   kraken2_T0:
@@ -37,18 +38,66 @@ set-resources:
 
   kaiju_T0:
     slurm_partition: assemblix
-    cpus_per_task: 20
+    cpus_per_task: 8
     mem_mb: 320000
-    runtime: 150m
+    runtime: 240m
 
   kaiju_T1:
     slurm_partition: assemblix
-    cpus_per_task: 20
+    cpus_per_task: 8
     mem_mb: 320000
-    runtime: 150m
+    runtime: 240m
 
   kaiju_T2:
     slurm_partition: assemblix
-    cpus_per_task: 20
+    cpus_per_task: 8
     mem_mb: 320000
-    runtime: 150m
+    runtime: 240m
+
+  kaiju_add_taxon_names:
+    slurm_partition: assemblix
+    cpus_per_task: 4
+    mem_mb: 16000
+    runtime: 60m
+
+  kaiju_report:
+    slurm_partition: assemblix
+    cpus_per_task: 4
+    mem_mb: 16000
+    runtime: 60m
+
+  kaiju_add_taxon_names_T0:
+    slurm_partition: assemblix
+    cpus_per_task: 4
+    mem_mb: 16000
+    runtime: 60m
+
+  kaiju_add_taxon_names_T1:
+    slurm_partition: assemblix
+    cpus_per_task: 4
+    mem_mb: 16000
+    runtime: 60m
+
+  kaiju_add_taxon_names_T2:
+    slurm_partition: assemblix
+    cpus_per_task: 4
+    mem_mb: 16000
+    runtime: 60m
+
+  kaiju_report_T0:
+    slurm_partition: assemblix
+    cpus_per_task: 4
+    mem_mb: 16000
+    runtime: 60m
+
+  kaiju_report_T1:
+    slurm_partition: assemblix
+    cpus_per_task: 4
+    mem_mb: 16000
+    runtime: 60m
+
+  kaiju_report_T2:
+    slurm_partition: assemblix
+    cpus_per_task: 4
+    mem_mb: 16000
+    runtime: 60m
