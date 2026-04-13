@@ -66,7 +66,7 @@ rule kraken2_T1:
         report="results/kraken/T1/{sample}.report",
         unclassified="results/kraken/T1/{sample}_unclassified.fastq"
     params:
-        db = config["kaiju_db"]
+        db = config["kraken_db"]
     threads: 20
     shell:
         """
