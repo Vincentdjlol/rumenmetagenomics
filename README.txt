@@ -12,11 +12,6 @@ De Illumina data is gegenereerd met Miseq DNA library prep kit v3 met 300bp pair
 De MinION data is gegeneerd met Rapid Barcoding kit ONT SQK-RBK004 op een FLO-MIN109 flowcell.
 
 De Illumina data is in de "rumen_miseq" directory, de MinION data in de "rumen_minion" directory. Die laatste bevat zowel de ruwe Fast5 data ("fast5_pass") alswel de met Guppy gebasecallde fastq data ("fastq_pass", quality threshold Q8).
-
-Rumen Metagenomics Pipeline
-Deze repository bevat een pipeline voor de analyse van metagenomische data uit een kunstmatige pens (rumen) reactor. De pipeline is ontwikkeld voor het verwerken en analyseren van sequencing data afkomstig van zowel Illumina MiSeq als Oxford Nanopore MinION.
-
-De pipeline maakt gebruik van Snakemake workflows en Kraken2 voor taxonomische classificatie.
 ---
 Structuur van de repository
 ```
@@ -31,13 +26,14 @@ rumenmetagenomics/
 ├── Snakefilerumenminion.smk # Workflow voor Minion data
 └── config.yaml # Configuratie voor slurm
 ```
+
 ---
-Vereisten
 De pipeline vereist de volgende software:
 Snakemake
 Kraken2
 Python
 ---
+
 Gebruik
 1. Clone de repository
 ```
